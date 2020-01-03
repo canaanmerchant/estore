@@ -19,6 +19,8 @@ import { selectCurrentUser } from './redux/user/user.selector';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
+import { selectCollectionsForPreview } from './redux/shop/shop.selectors'; 
+
 
 class App extends React.Component {
 
@@ -27,7 +29,7 @@ class App extends React.Component {
   unsubscribeFromAuth = null
 
   componentDidMount() {
-    const {setCurrentUser} = this.props;
+    const {setCurrentUser } = this.props;
     auth.onAuthStateChanged(async userAuth => {
         if (userAuth) {
           const userRef = await createUserProfileDocument(userAuth);
